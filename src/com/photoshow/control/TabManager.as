@@ -1,8 +1,7 @@
 
 package com.photoshow.control
 {
-	import com.photoshow.view.ImagesPanel;
-	import com.photoshow.view.Welcome;
+	import com.photoshow.view.StartPage;
 	import com.photoshow.model.Images;
 	
 	import mx.containers.TabNavigator;
@@ -59,18 +58,11 @@ package com.photoshow.control
 			uniqueTabs[uniqueId] = tab;		
 		}
 		
-		public static function openWelcome():Welcome
+		public static function openStartPage():StartPage
 		{
-			return openTab(Welcome, "WELCOME") as Welcome;
+			return openTab(StartPage, "STARTPAGE") as StartPage;
 		}
 
-		public static function openImages(images:Images):ImagesPanel
-		{
-			var tab:ImagesPanel = TabManager.openTab(ImagesPanel, "IMAGES") as ImagesPanel;
-			tab.images = images;
-			return tab;
-		}
-		
 		public static function removeTab(tab:Container):void
 		{	
 			tabNav.removeChild(tab);

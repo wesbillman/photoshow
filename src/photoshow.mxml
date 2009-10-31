@@ -17,37 +17,42 @@
 		import mx.managers.PopUpManager;
 		import com.photoshow.view.ToolsDialog;
 		import com.photoshow.view.ImagesSummary;
+		import com.photoshow.view.AudioSummary;
+		import com.photoshow.view.ProjectPreview;
+		import com.photoshow.view.ServerSummary;
 		import com.photoshow.control.TabManager;
 		
 		private function initApp():void
 		{
 			TabManager.tabNavigator = tn;
-			TabManager.openWelcome()
+			TabManager.openStartPage()
+		}
+		
+		private function showTools():void 
+		{
+			var dialog:ToolsDialog = PopUpManager.createPopUp(this, ToolsDialog, true) as ToolsDialog;
+			PopUpManager.centerPopUp(dialog);	
 		}
 		
 		private function buttonBarClick(event:ItemClickEvent):void
 		{
 			switch (event.index) 
 			{
-//				case 0:
-//					var dialog:ToolsDialog = PopUpManager.createPopUp(this, ToolsDialog, false) as ToolsDialog;
-//					PopUpManager.centerPopUp(dialog);
-//    				break;
 				case 0:
-					TabManager.openWelcome()
+					TabManager.openStartPage() 
 					break;
 				case 1:
 					TabManager.openTab(ImagesSummary, "ImagesSummary");
     				break;
-//				case 2:
-//					TabManager.openTab(ContactSummary, "ContactSummary");
-//    				break;
-//				case 3:
-//					TabManager.openTab(OpportunitySummary, "OpportunitySummary");
-//    				break;
-//				case 4:
-//					TabManager.openDashboard();
-//					break;
+				case 2:
+					TabManager.openTab(AudioSummary, "AudioSummary");
+    				break;
+				case 3:
+					TabManager.openTab(ProjectPreview, "ProjectPreview");
+    				break;
+				case 4:
+					TabManager.openTab(ServerSummary, "ServerSummary");
+					break;
 			}
 		}
 		
@@ -79,27 +84,22 @@
 	
 			<mx:Label text="Photoshow" styleName="appTitle" left="22" verticalCenter="0"/>
 			
-			<mx:Label text="Easy slideshow creation" styleName="welcome" right="500" verticalCenter="0"/>
+			<mx:Label text="Easy slideshow creation" styleName="welcome" right="345" verticalCenter="0"/>
 
-			<mx:Image source="@Embed('assets/top_separator.png')" right="490.5" y="0"/>
+			<mx:Image source="@Embed('assets/top_separator.png')" right="335.5" y="0"/>
 	
-		 	<mx:ButtonBar id="bb" right="285" height="29" itemClick="buttonBarClick(event)" verticalCenter="0" buttonWidth="40">
+		 	<mx:ButtonBar id="bb" right="130" height="29" itemClick="buttonBarClick(event)" verticalCenter="0" buttonWidth="40">
 				<mx:dataProvider>
-					<mx:Object icon="@Embed('assets/images--plus.png')" toolTip="New Project"/>
-					<mx:Object icon="@Embed('assets/icon_account.png')" toolTip="Open Project"/>
-					<mx:Object icon="@Embed('assets/icon_contact.png')" toolTip="Contacts"/>
-					<mx:Object icon="@Embed('assets/icon_opportunity.png')" toolTip="Opportunities"/>
-					<mx:Object icon="@Embed('assets/icon_dashboard.png')" toolTip="Dashboard"/>
+					<mx:Object icon="@Embed('assets/home.png')" toolTip="Start Page"/>
+					<mx:Object icon="@Embed('assets/images-stack.png')" toolTip="Images"/>
+					<mx:Object icon="@Embed('assets/music-beam.png')" toolTip="Audio"/>
+					<mx:Object icon="@Embed('assets/monitor-cast.png')" toolTip="Preview"/>
+					<mx:Object icon="@Embed('assets/server-network.png')" toolTip="Server Settings"/>
 				</mx:dataProvider>
 			</mx:ButtonBar>
 			
-			<mx:Button icon="@Embed('assets/icon_plus.png')" width="31" height="29" verticalCenter="0" right="248"/>
+			<mx:Button icon="@Embed('assets/gear.png')" width="31" height="29" verticalCenter="0" right="80" click="showTools()" toolTip="Settings"/>
 			
-			<mx:Image source="@Embed('assets/top_separator.png')" right="232.5" y="0"/>
-	
-
-
-
 			<mx:Image source="@Embed('assets/top_separator.png')" right="66.5" y="0"/>
 	
 			<mx:Button styleName="iconMinimize" verticalCenter="0" right="46" click="minimize()"/>
