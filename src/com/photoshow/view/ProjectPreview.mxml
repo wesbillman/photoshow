@@ -9,38 +9,23 @@
 		<![CDATA[
 
 		import com.photoshow.control.TabManager;
-		import com.photoshow.model.Images;
-		
-		private var max:Number = 0;
 		
 		public function loadData():void
 		{
-
+			minibrowser.location = "http://kimberlypaynephotography.com/flowers2/";
 		}
 
         ]]>
 
     </mx:Script>
 
-	<mx:HBox width="100%" height="100%" paddingTop="12" paddingBottom="8" paddingLeft="8" paddingRight="8" horizontalGap="20">
-		
-		<mx:VBox width="60%" height="100%" verticalGap="4">
-			
-			<mx:Label styleName="title" text="Top 10 Accounts"/>
-			
-			<mx:Spacer height="8"/>
-			
-			<mx:Label styleName="title" text="Recent Activity"/>
-	
-		</mx:VBox>
-
-		<mx:VBox width="40%" height="100%" verticalGap="4">
-			
-			<mx:Label styleName="title" text="All Accounts"/>
-			
-			
-		</mx:VBox>
-
-	</mx:HBox>
-	
+    <mx:HBox width="100%" paddingTop="5">
+        <mx:Button label="&lt;" click="minibrowser.historyBack()"/>
+        <mx:Button label="&gt;" click="minibrowser.historyForward()"/>
+        <mx:Button label="Reload" click="minibrowser.reload()"/>
+        <mx:TextInput id="loc" width="100%" enter="minibrowser.location = loc.text" text="{minibrowser.location}"/>
+        <mx:Button label="Go" click="minibrowser.location = loc.text"/>
+    </mx:HBox>
+    <!-- Create an HTML control at 50% scale -->
+    <mx:HTML id="minibrowser" width="100%" height="100%" />
 </mx:Canvas>
