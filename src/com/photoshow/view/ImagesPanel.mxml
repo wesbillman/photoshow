@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:c="com.photoshow.controls.*" 
+	xmlns:v="com.photoshow.view.*" 
+	icon="@Embed('/assets/icon_account.png')"
+	verticalGap="0">
+	
+	<mx:Script>
+		<![CDATA[
+
+			import com.photoshow.model.Images;
+			
+			[Bindable] private var _images:Images;
+	
+			public function set images(images:Images):void
+			{
+				_images = images;
+				label = "Images Label";
+			}
+
+		]]>
+	</mx:Script>
+
+	
+	<mx:HRule bottom="0" width="100%" height="1" strokeColor="#B9B9B9"/>
+
+	<mx:ViewStack id="vs" width="100%" height="100%">
+
+	</mx:ViewStack>
+		
+</mx:VBox>

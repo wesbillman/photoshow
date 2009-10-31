@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Christophe Coenraets, christophe@coenraets.org - http://coenraets.org -->
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300"
+	showCloseButton="true" 
+	close="PopUpManager.removePopUp(this)"
+	paddingTop="12" verticalGap="8"
+	title="Tools">
+
+	<mx:Script>
+		<![CDATA[
+			
+			import mx.managers.PopUpManager;
+			
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Button label="Create" bottom="10" right="10" width="200"/>
+	
+</mx:TitleWindow>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+	
+<mx:WindowedApplication 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:v="com.photoshow.view.*" 
+	xmlns:c="com.photoshow.control.*" 
+	xmlns:lib="flexlib.containers.*" 
+	width="980" height="730"
+	showFlexChrome="false"
+	showStatusBar="false"
+	creationComplete="initApp()">
+	
+	<mx:Script>
+		<![CDATA[
+		import mx.events.ItemClickEvent;
+		import mx.controls.Alert;
+		import mx.managers.PopUpManager;
+		import com.photoshow.view.ToolsDialog;
+		import com.photoshow.view.ImagesSummary;
+		import com.photoshow.control.TabManager;
+		
+		private function initApp():void
+		{
+			TabManager.tabNavigator = tn;
+			TabManager.openWelcome()
+		}
+		
+		private function buttonBarClick(event:ItemClickEvent):void
+		{
+			switch (event.index) 
+			{
+//				case 0:
+//					var dialog:ToolsDialog = PopUpManager.createPopUp(this, ToolsDialog, false) as ToolsDialog;
+//					PopUpManager.centerPopUp(dialog);
+//    				break;
+				case 0:
+					TabManager.openWelcome()
+					break;
+				case 1:
+					TabManager.openTab(ImagesSummary, "ImagesSummary");
+    				break;
+//				case 2:
+//					TabManager.openTab(ContactSummary, "ContactSummary");
+//    				break;
+//				case 3:
+//					TabManager.openTab(OpportunitySummary, "OpportunitySummary");
+//    				break;
+//				case 4:
+//					TabManager.openDashboard();
+//					break;
+			}
+		}
+		
+		private function createNewProject(event:Event):void {
+			Alert.show("creating new project");
+		}
+		
+		private function toggleMaximize():void
+		{
+			if (nativeWindow.displayState == NativeWindowDisplayState.MAXIMIZED)
+			{
+				restore();
+			}
+			else
+			{
+				maximize();
+			}
+		}
+		
+		]]>
+	</mx:Script>
+	
+	<mx:Style source="style.css"/>
+	
+	<mx:Canvas width="100%" height="100%" styleName="appContainer">
+		
+		<!-- The Window Header -->
+		<mx:Canvas mouseDown="nativeWindow.startMove()" top="0" left="0" right="0">
+	
+			<mx:Label text="Photoshow" styleName="appTitle" left="22" verticalCenter="0"/>
+			
+			<mx:Label text="Easy slideshow creation" styleName="welcome" right="500" verticalCenter="0"/>
+
+			<mx:Image source="@Embed('assets/top_separator.png')" right="490.5" y="0"/>
+	
+		 	<mx:ButtonBar id="bb" right="285" height="29" itemClick="buttonBarClick(event)" verticalCenter="0" buttonWidth="40">
+				<mx:dataProvider>
+					<mx:Object icon="@Embed('assets/images--plus.png')" toolTip="New Project"/>
+					<mx:Object icon="@Embed('assets/icon_account.png')" toolTip="Open Project"/>
+					<mx:Object icon="@Embed('assets/icon_contact.png')" toolTip="Contacts"/>
+					<mx:Object icon="@Embed('assets/icon_opportunity.png')" toolTip="Opportunities"/>
+					<mx:Object icon="@Embed('assets/icon_dashboard.png')" toolTip="Dashboard"/>
+				</mx:dataProvider>
+			</mx:ButtonBar>
+			
+			<mx:Button icon="@Embed('assets/icon_plus.png')" width="31" height="29" verticalCenter="0" right="248"/>
+			
+			<mx:Image source="@Embed('assets/top_separator.png')" right="232.5" y="0"/>
+	
+
+
+
+			<mx:Image source="@Embed('assets/top_separator.png')" right="66.5" y="0"/>
+	
+			<mx:Button styleName="iconMinimize" verticalCenter="0" right="46" click="minimize()"/>
+			<mx:Button styleName="iconMaximize" verticalCenter="0" right="33" click="toggleMaximize()"/>
+			<mx:Button styleName="iconClose" verticalCenter="0" right="20" click="close()"/>
+	
+		</mx:Canvas>
+	
+		<mx:Box styleName="tabContainer"  backgroundSize="100%" top="62" left="14" right="14" bottom="28" paddingTop="1" paddingLeft="2" paddingBottom="2" paddingRight="2">
+			<lib:SuperTabNavigator id="tn" width="100%" height="100%" tabWidth="140"/>
+		</mx:Box>
+
+		<mx:HRule top="90" left="16" right="16" width="100%" height="1" strokeColor="#B9B9B9"/>
+
+		<mx:Image source="@Embed('assets/icon_grip.png')" bottom="14" right="10" 
+			mouseDown="nativeWindow.startResize()"/>
+
+	</mx:Canvas>
+</mx:WindowedApplication>
