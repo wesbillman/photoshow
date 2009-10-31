@@ -84,7 +84,7 @@
 	
 			<mx:Label text="Photoshow" styleName="appTitle" left="22" verticalCenter="0"/>
 			
-			<mx:Label text="Easy slideshow creation" styleName="welcome" right="345" verticalCenter="0"/>
+			<mx:Label text="No Project Selected" styleName="welcome" right="345" verticalCenter="0"/>
 
 			<mx:Image source="@Embed('assets/top_separator.png')" right="335.5" y="0"/>
 	

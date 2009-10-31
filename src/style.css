@@ -93,11 +93,6 @@ Button {
 }
 
 TextInput {
-	border-skin: Embed("assets/textinput_skin.png",
-			scaleGridLeft="4",
-			scaleGridRight="148",
-			scaleGridTop="4",
-			scaleGridBottom="25");
 	padding-left: 2;
 	vertical-align:middle;
 }

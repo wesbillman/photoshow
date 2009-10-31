@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" width="500" height="200" 
+	showCloseButton="true" 
+	close="PopUpManager.removePopUp(this)"
+	paddingTop="12" verticalGap="8"
+	title="Create Project"
+	creationComplete="initApp()">
+
+	<mx:Script>
+		<![CDATA[
+			
+			import mx.managers.PopUpManager;
+			private function initApp():void
+			{
+				location.text = File.userDirectory.nativePath;
+			}
+			
+			private function defaultClicked():void
+			{
+				location.enabled = !useDefault.selected;
+				browse.enabled = !useDefault.selected;
+				if(useDefault.selected)
+					location.text = File.userDirectory.nativePath;
+			}
+			
+			private function browseDir(e:Event):void{
+                var dir:File = new File();
+                dir.browseForDirectory("Select directory");
+                dir.addEventListener(Event.SELECT, onDirSelect);
+            }
+            
+            private function onDirSelect(event:Event):void{
+            	var file:File = event.currentTarget as File;
+            	location.text = file.nativePath;
+            }
+			
+		]]>
+	</mx:Script>
+	<mx:VBox width="100%" height="100%" paddingTop="36" paddingBottom="8" paddingLeft="12" paddingRight="12">
+		<mx:HBox width="100%">
+			<mx:Label styleName="title" text="Project Name"/>
+			<mx:TextInput id="project" text="" width="100%"/>
+		</mx:HBox>
+		<mx:HRule width="100%"/>
+		<mx:CheckBox id="useDefault" label="Use default location" selected="true" click="defaultClicked()"/>
+		<mx:HBox width="100%">
+			<mx:Label styleName="title" text="Project Location"/>
+			<mx:TextInput id="location" width="100%" enabled="false"/>
+		</mx:HBox>
+		<mx:HBox horizontalAlign="right" width="100%">
+			<mx:Button id="browse" label="Browse" enabled="false" click="browseDir(event)"/>
+		</mx:HBox>
+	</mx:VBox>
+	
+</mx:TitleWindow>
