@@ -11,8 +11,7 @@
 	<mx:Script>
 		<![CDATA[
 			
-			import mx.controls.Alert;
-			import mx.managers.PopUpManager;
+			 
 			
 			public function loadData():void
 			{

@@ -1,7 +1,7 @@
 
 package com.photoshow.control
 {
-	import com.photoshow.view.StartPage;
+	import com.photoshow.view.ProjectsSummary;
 	import com.photoshow.model.Images;
 	
 	import mx.containers.TabNavigator;
@@ -58,9 +58,9 @@ package com.photoshow.control
 			uniqueTabs[uniqueId] = tab;		
 		}
 		
-		public static function openStartPage():StartPage
+		public static function openStartPage():ProjectsSummary
 		{
-			return openTab(StartPage, "STARTPAGE") as StartPage;
+			return openTab(ProjectsSummary, "ProjectSummary") as ProjectsSummary;
 		}
 
 		public static function removeTab(tab:Container):void

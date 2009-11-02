@@ -13,7 +13,7 @@
 			
 		]]>
 	</mx:Script>
-	
-	<mx:Button label="Create" bottom="10" right="10" width="200"/>
-	
+	<mx:HBox width="100%" height="100%" paddingTop="36" paddingBottom="8" paddingLeft="12" paddingRight="12">
+		<mx:Label text="TODO" styleName="title"/>
+	</mx:HBox>
 </mx:TitleWindow>
